@@ -1,10 +1,13 @@
 spring:
+  main:
+    allow-circular-references: true
+
   data:
     cassandra:
       keyspace-name: main
       username: qoIMFydQcDGQwUMOMLqZIigj
       password: lNeHZX5KtmRqtJ1Ug6bC-bIUhba1S+fb7aFN3D1QQ9,LD6rCNnAYtfHEs,+.u3GEojK7C5pKnmu0O9M4EeaX2DWw2OK8To5p7p2XfvtbZfS,nbxHDQImS2td7geUa0pH
-      schema-action: create-if-not-exists
+      schema-action: recreate
       request:
         timeout: 10s
       connection:
@@ -20,3 +23,7 @@ astra.db:
   keyspace: main
   application.token: AstraCS:qoIMFydQcDGQwUMOMLqZIigj:47caa943ec73aaf70ac72dbe9bbb29a0bbffbefd445d9542086b48937793d899
 
+
+datadump.location:
+  author: /Users/hedwig/Projects/betterreads-data-loader/src/main/resources/data/test-authors.txt
+  work: /Users/hedwig/Projects/betterreads-data-loader/src/main/resources/data/test-works.txt
