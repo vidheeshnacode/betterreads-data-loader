@@ -29,8 +29,8 @@ public class Book {
     private LocalDate publishedDate;
 
     @Column("cover_ids")
-    @CassandraType(type = CassandraType.Name.LIST, typeArguments = CassandraType.Name.INT)
-    private List<Integer> coverIds;
+    @CassandraType(type = CassandraType.Name.LIST, typeArguments = CassandraType.Name.TEXT)
+    private List<String> coverIds;
 
     @Column("author_names")
     @CassandraType(type = CassandraType.Name.LIST, typeArguments = CassandraType.Name.TEXT)
@@ -72,11 +72,11 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-    public List<Integer> getCoverIds() {
+    public List<String> getCoverIds() {
         return coverIds;
     }
 
-    public void setCoverIds(List<Integer> coverIds) {
+    public void setCoverIds(List<String> coverIds) {
         this.coverIds = coverIds;
     }
 

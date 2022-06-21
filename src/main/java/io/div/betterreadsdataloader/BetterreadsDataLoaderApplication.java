@@ -93,7 +93,6 @@ public class BetterreadsDataLoaderApplication {
 					book.setId(jsonObject.getString("key").replace("/works/", ""));
 
 					book.setName(jsonObject.optString("title"));
-
 					JSONObject descriptionObj = jsonObject.optJSONObject("description");
 					if (descriptionObj != null){
 						book.setDescription(descriptionObj.optString("value"));
@@ -107,9 +106,9 @@ public class BetterreadsDataLoaderApplication {
 
 					JSONArray coversJSONArr = jsonObject.optJSONArray("covers");
 					if (coversJSONArr != null){
-						List<Integer> coverIds = new ArrayList<>();
+						List<String> coverIds = new ArrayList<>();
 						for(int i = 0; i < coversJSONArr.length(); i++){
-							coverIds.add(coversJSONArr.getInt(i));
+							coverIds.add(coversJSONArr.optString(i));
 						}
 						book.setCoverIds(coverIds);
 					}
@@ -131,7 +130,7 @@ public class BetterreadsDataLoaderApplication {
 						book.setAuthorNames(authorNames);
 
 						// Persist using Repository
-						System.out.println("Saving author " + book.getName()+ ".....");
+						System.out.println("Saving book " + book.getName()+ ".....");
 						bookRepository.save(book);
 					}
 
